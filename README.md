@@ -1,86 +1,87 @@
-#demo video
-https://drive.google.com/file/d/1y9---xGwfIDoaoxVmETcxIrsp6uCCrcg/view?usp=sharing
-
 # Telegram Bot with Gemini AI Integration
 
-## Overview
+A powerful Telegram bot that combines user registration, Gemini AI-powered chat responses, image analysis, and web search capabilities.
 
-This project is a Telegram bot that provides user registration, Gemini-powered chat responses, image and file analysis, and web search capabilities. The bot leverages the Gemini API for AI-driven interactions and MongoDB for data storage.
+## Demo
+
+Watch a demo of the bot in action: [Demo Video](https://drive.google.com/file/d/1y9---xGwfIDoaoxVmETcxIrsp6uCCrcg/view?usp=sharing)
 
 ## Features
 
-### User Registration
+- 🤖 **AI-Powered Chat**: Powered by Google's Gemini AI for intelligent responses
+- 📝 **User Registration**: Collects and stores user information including phone numbers
+- 🖼️ **Image Analysis**: Analyzes images and documents using Gemini AI
+- 🔍 **Web Search**: Perform web searches with AI-generated summaries
+- 💾 **MongoDB Integration**: Persistent storage for user data and chat history
 
-- Saves user details (first name, username, chat ID) in MongoDB upon first interaction.
-- Requests and stores the user's phone number using Telegram's contact button.
+## Prerequisites
 
-### Gemini-Powered Chat
-
-- Uses the Gemini API to generate responses to user queries.
-- Stores the full chat history in MongoDB with timestamps.
-
-### Image/File Analysis
-
-- Accepts images and files (e.g., JPG, PNG, PDF) and uses Gemini to describe their content.
-- Saves file metadata and analysis results in MongoDB.
-
-### Web Search
-
-- Allows users to perform web searches using the `/websearch` command.
-- Returns AI-generated summaries of search results with top web links.
+- Python 3.7+
+- MongoDB running locally or a MongoDB Atlas connection string
+- Telegram Bot Token (from [@BotFather](https://t.me/botfather))
+- Gemini API Key (from [Google AI Studio](https://makersuite.google.com/app/apikey))
 
 ## Installation
 
-### 1. Clone the Repository
-
-```sh
-git clone https://github.com/your-repository.git
-cd your-repository
+1. Clone the repository:
+```bash
+git clone <your-repo-url>
+cd telegram-chatbot
 ```
 
-### 2. Install Dependencies
-
-```sh
+2. Install the required dependencies:
+```bash
 pip install -r requirements.txt
 ```
 
-### 3. Set Up Environment Variables
-
-Create a `.env` file in the project root directory and add the following:
-
-```ini
-TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-MONGODB_URI=your_mongodb_connection_string
+3. Create a `.env` file in the project root and add your credentials:
+```env
+BOT_TOKEN=your_telegram_bot_token
+MONGO_URI=your_mongodb_connection_string
 GEMINI_API_KEY=your_gemini_api_key
 ```
 
-### 4. Run the Bot
+## Project Structure
 
-```sh
-python bot.py
+```
+telegram-chatbot/
+├── main.py              # Main bot application entry point
+├── telebot.py           # User registration and contact handling
+├── handlers/            # Message and command handlers
+│   ├── registration.py  # User registration logic
+│   ├── gemini_chat.py   # Gemini AI chat handling
+│   ├── image_analysis.py # Image and file analysis
+│   └── web_search.py    # Web search functionality
+├── requirements.txt     # Project dependencies
+└── .env                # Environment variables
 ```
 
 ## Usage
 
-- **Start the Bot**: Interact with the bot on Telegram by sending the `/start` command.
-- **Register**: Share your contact information when prompted to complete registration.
-- **Chat**: Send any text message to receive a response from the Gemini API.
-- **Analyze Files**: Upload an image or document to receive an analysis.
-- **Web Search**: Use the `/websearch` command followed by your query to perform a web search.
+1. Start the bot:
+```bash
+python main.py
+```
 
-## Technologies Used
+2. In Telegram, start a chat with your bot and use the following commands:
+- `/start` - Begin user registration
+- `/websearch <query>` - Perform a web search
+- Send any text message to chat with the AI
+- Send images or documents for analysis
 
-- **Python**: Programming language for the bot logic.
-- **Telegram Bot API**: Interface for interacting with Telegram users.
-- **MongoDB**: Database for storing user data and chat history.
-- **Gemini API**: AI service for generating chat responses and analyzing content.
-- **aiohttp**: Library for making asynchronous HTTP requests.
+## Dependencies
+
+- `python-telegram-bot==20.3` - Telegram Bot API wrapper
+- `google-generativeai>=0.3.0` - Google's Gemini AI API
+- `python-dotenv>=0.19.0` - Environment variable management
+- `motor>=3.1.0` - Async MongoDB driver
+- `aiohttp>=3.8.0` - Async HTTP client
 
 ## Contributing
 
-Contributions are welcome! Please fork the repository and submit a pull request for any improvements or bug fixes.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
